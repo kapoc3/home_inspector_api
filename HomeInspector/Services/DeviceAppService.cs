@@ -39,6 +39,13 @@ namespace HomeInspector.Services
             
         }
 
+        public async Task<DeviceDto> GetDeviceByMac(string mac)
+        {
+            var device = await _deviceRepository.FindAsync(d => d.Mac == mac);
+            var result = Mapper.Map<Device, DeviceDto>(device);
+            return result;
+        }
+
         public Task DeleteAsync(Guid id)
         {
             throw new NotImplementedException();

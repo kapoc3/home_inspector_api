@@ -6,5 +6,6 @@ namespace HomeInspector.Services.Interfaces
 {
     public interface IDeviceAppService : ICrudAppService<DeviceDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateDeviceDto, CreateUpdateDeviceDto>
     {
+        Task<DeviceDto> GetDeviceByMac(string mac);
     }
 }
