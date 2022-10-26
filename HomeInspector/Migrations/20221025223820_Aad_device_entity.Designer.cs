@@ -4,6 +4,7 @@ using HomeInspector.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,10 @@ using Volo.Abp.EntityFrameworkCore;
 namespace HomeInspector.Migrations
 {
     [DbContext(typeof(HomeInspectorDbContext))]
-    partial class HomeInspectorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221025223820_Aad_device_entity")]
+    partial class Aad_device_entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

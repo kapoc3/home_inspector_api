@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HomeInspector.Entities;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
@@ -7,11 +8,13 @@ using Volo.Abp.IdentityServer.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
-
 namespace HomeInspector.Data;
 
 public class HomeInspectorDbContext : AbpDbContext<HomeInspectorDbContext>
 {
+
+    public DbSet<Device> Devices { get; set; }
+
     public HomeInspectorDbContext(DbContextOptions<HomeInspectorDbContext> options)
         : base(options)
     {
@@ -32,5 +35,15 @@ public class HomeInspectorDbContext : AbpDbContext<HomeInspectorDbContext>
         builder.ConfigureTenantManagement();
 
         /* Configure your own entities here */
+        ConfigureDevice(builder);
+    }
+
+
+    private static void ConfigureDevice(ModelBuilder builder)
+    {
+        builder.Entity<Device>(b =>
+        {
+            b.HasIndex(x => x.Mac).IsUnique();
+        });
     }
 }
