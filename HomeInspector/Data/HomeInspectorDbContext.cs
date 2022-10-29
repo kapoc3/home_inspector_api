@@ -14,6 +14,8 @@ public class HomeInspectorDbContext : AbpDbContext<HomeInspectorDbContext>
 {
 
     public DbSet<Device> Devices { get; set; }
+    public DbSet<Profile> Profiles { get; set; }
+    
 
     public HomeInspectorDbContext(DbContextOptions<HomeInspectorDbContext> options)
         : base(options)
