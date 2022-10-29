@@ -5,7 +5,7 @@ using Volo.Abp.Domain.Entities.Auditing;
 namespace HomeInspector.Entities
 {
     [Table("Profiles")]
-    public class Profile : AuditedAggregateRoot<Guid>
+    public class ProfileOwn : AuditedAggregateRoot<Guid>
     {
         public int ProfileId { get; set; }
         public DateTime ReadDateTime { get; set; }
@@ -16,8 +16,9 @@ namespace HomeInspector.Entities
         /// <summary>
         /// Data in mgabytes
         /// </summary>
-        public float Download { get; set; }
+        public float DownloadSpeed { get; set; }
         public float Ping { get; set; }
+        public Guid DeviceId { get; set; }
         public virtual Device Device { get; set; }
 
     }
